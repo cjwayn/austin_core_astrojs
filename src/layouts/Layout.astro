@@ -1,0 +1,100 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Austin Core Legal - Practical, Commercial, Efficient Boutique Law Firm.' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    
+    <!-- Decap CMS Identity Widget -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <!-- Navbar -->
+    <header class="fixed w-full items-center z-50 transition-all duration-300 bg-white/90 backdrop-blur-md shadow-sm">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8 py-5 flex justify-between items-center">
+        <a href="/" class="text-2xl font-serif font-bold text-brand-navy tracking-tight group">
+          Austin Core <span class="text-brand-gold group-hover:text-amber-500 transition-colors">Legal</span>
+        </a>
+        <nav class="hidden md:flex gap-8 items-center text-sm font-medium text-brand-gray tracking-wide">
+          <a href="/#about" class="hover:text-brand-navy transition-colors">About</a>
+          <a href="/#areas" class="hover:text-brand-navy transition-colors">Practice Areas</a>
+          <a href="/contact" class="px-5 py-2.5 bg-brand-navy text-white rounded hover:bg-slate-800 transition-colors shadow-md hover:shadow-lg">Contact Us</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="flex-grow pt-24">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-navy text-white/80 py-16 border-t border-white/10 mt-auto">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8 grid md:grid-cols-3 gap-12">
+        <div>
+          <h3 class="font-serif text-2xl text-white mb-6">Austin Core Legal</h3>
+          <p class="text-sm leading-relaxed mb-6 font-light">Practical + Commercial + Efficient</p>
+          <p class="text-xs opacity-60">ACN: 641 023 136<br/>Liability limited by a scheme approved under Professional Standards Legislation.</p>
+        </div>
+        <div>
+          <h4 class="font-serif text-lg text-brand-gold mb-6 tracking-wide">Contact</h4>
+          <ul class="space-y-3 text-sm font-light">
+            <li><a href="mailto:info@austincorelegal.com.au" class="hover:text-white transition-colors">info@austincorelegal.com.au</a></li>
+            <li><a href="tel:0481225870" class="hover:text-white transition-colors">0481 225-870</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-serif text-lg text-brand-gold mb-6 tracking-wide">Offices</h4>
+          <div class="space-y-6 text-sm font-light">
+            <div>
+              <p class="font-medium text-white mb-1">Sydney (By Appointment)</p>
+              <p>Suite 10 Level 3, 88 Pitt Street<br/>Sydney NSW 2000</p>
+            </div>
+            <div>
+              <p class="font-medium text-white mb-1">Melbourne (By Appointment)</p>
+              <p>Suite 42, 139 Cardigan St<br/>Carlton VIC 3053</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="max-w-7xl mx-auto px-6 lg:px-8 mt-16 pt-8 border-t border-white/10 text-xs text-center font-light opacity-60">
+        &copy; {new Date().getFullYear()} Austin Core Legal Pty Ltd. All rights reserved.
+      </div>
+    </footer>
+
+    <!-- Netlify Identity Snippet -->
+    <script>
+      declare global {
+        interface Window {
+          netlifyIdentity: any;
+        }
+      }
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", (user: any) => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

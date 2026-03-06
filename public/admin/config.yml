@@ -1,0 +1,17 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "practice-areas"
+    label: "Practice Areas"
+    folder: "src/content/practice-areas"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Description/Excerpt", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}

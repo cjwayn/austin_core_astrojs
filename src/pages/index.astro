@@ -1,0 +1,85 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import PracticeAreaCard from '../components/PracticeAreaCard.astro';
+
+const practiceAreas = await getCollection('practice-areas');
+---
+
+<Layout title="Austin Core Legal | Professional Boutique Law Firm">
+  
+  <!-- Hero Section -->
+  <section class="relative min-h-[85vh] flex items-center bg-brand-navy text-white overflow-hidden">
+    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-10"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-brand-navy via-brand-navy/90 to-transparent"></div>
+    
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-8 py-24 z-10 w-full animate-fade-in-up">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-3 mb-8">
+          <span class="h-px w-12 bg-brand-gold"></span>
+          <span class="text-brand-gold uppercase tracking-widest text-sm font-semibold">Progressive, Value and Results</span>
+        </div>
+        <h1 class="text-5xl md:text-7xl font-serif font-medium leading-tight mb-8">
+          Practical. Commercial. <br/><span class="text-brand-gold italic">Efficient.</span>
+        </h1>
+        <p class="text-lg md:text-xl text-white/80 font-light leading-relaxed mb-12 max-w-2xl">
+          A boutique law firm with a strong focus on providing tailored legal services to individuals and businesses.
+          <strong class="font-normal block mt-4 tracking-wide text-white">FLEXIBLE. ACCURATE. PROFESSIONAL.</strong>
+        </p>
+        <div class="flex gap-4">
+          <a href="#areas" class="px-8 py-4 bg-brand-gold text-brand-navy font-semibold hover:bg-amber-400 transition-colors shadow-lg hover:shadow-xl rounded">
+            Our Practice Areas
+          </a>
+          <a href="/contact" class="px-8 py-4 border border-white/30 hover:border-white hover:bg-white/5 transition-all rounded font-medium">
+            Get in Touch
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quote Section -->
+  <section class="py-24 bg-white text-center px-6">
+    <div class="max-w-4xl mx-auto">
+      <svg class="w-12 h-12 text-brand-gold/30 mx-auto mb-8" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true"><path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"/></svg>
+      <blockquote class="text-3xl md:text-4xl font-serif text-brand-navy leading-snug mb-8">
+        "We must all obey the great law of change. It is the most powerful law of nature."
+      </blockquote>
+      <cite class="text-brand-gray font-medium uppercase tracking-widest text-sm">— Edmund Burke</cite>
+    </div>
+  </section>
+
+  <!-- Practice Areas Section -->
+  <section id="areas" class="py-24 bg-brand-light">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-serif font-medium text-brand-navy mb-4">Areas of Practice</h2>
+        <div class="h-1 w-24 bg-brand-gold mx-auto"></div>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {practiceAreas.map((area) => (
+          <PracticeAreaCard 
+            title={area.data.title} 
+            description={area.data.description}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .animate-fade-in-up {
+    animation: fadeInUp 1s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
