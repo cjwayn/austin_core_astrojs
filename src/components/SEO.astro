@@ -1,0 +1,39 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  canonicalURL?: URL | string;
+  type?: 'website' | 'article';
+}
+
+const {
+  title,
+  description,
+  image = '/logo.png', // Fallback to site logo
+  canonicalURL = new URL(Astro.url.pathname, Astro.url),
+  type = 'website',
+} = Astro.props;
+
+// Ensure full URL for images, falling back to current domain
+const socialImageURL = new URL(image, Astro.url);
+---
+
+<!-- Core -->
+<title>{title} | Austin Core Legal</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalURL} />
+
+<!-- OpenGraph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={socialImageURL} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonicalURL} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={socialImageURL} />

@@ -1,0 +1,70 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection('blog');
+  return blogEntries.map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<Layout 
+  title={entry.data.title} 
+  description={entry.data.description} 
+  image={entry.data.image}
+  type="article"
+>
+  <article class="max-w-3xl mx-auto px-6 py-16">
+    <header class="mb-12 text-center md:text-left">
+      <div class="flex flex-wrap items-center justify-center md:justify-start gap-3 text-sm text-brand-gray mb-6">
+        <time datetime={entry.data.date.toISOString()} class="font-medium text-brand-gold">
+          {entry.data.date.toLocaleDateString('en-AU', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })}
+        </time>
+        <span aria-hidden="true">&middot;</span>
+        <span>By {entry.data.author}</span>
+        {entry.data.tags.length > 0 && (
+          <>
+            <span aria-hidden="true">&middot;</span>
+            <div class="flex gap-2">
+              {entry.data.tags.map(tag => (
+                <span class="bg-slate-100 text-brand-navy px-2 py-0.5 rounded-full text-xs font-semibold uppercase tracking-wider">{tag}</span>
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+      
+      <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl text-brand-navy leading-tight mb-8">
+        {entry.data.title}
+      </h1>
+
+      {entry.data.image && (
+        <div class="w-full aspect-[21/9] rounded-xl overflow-hidden shadow-lg mb-12">
+          <img src={entry.data.image} alt={entry.data.title} class="w-full h-full object-cover" />
+        </div>
+      )}
+    </header>
+
+    <div class="prose prose-lg prose-slate max-w-none prose-headings:font-serif prose-headings:text-brand-navy prose-a:text-brand-gold hover:prose-a:text-brand-navy">
+      <Content />
+    </div>
+
+    <!-- Go Back Link -->
+    <div class="mt-16 pt-8 border-t border-slate-200">
+      <a href="/blog" class="inline-flex items-center text-sm font-semibold text-brand-navy hover:text-brand-gold transition-colors">
+        <svg class="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+        Back to all articles
+      </a>
+    </div>
+  </article>
+</Layout>

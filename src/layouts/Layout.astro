@@ -1,12 +1,23 @@
 ---
 import '../styles/global.css';
 
+import SEO from '../components/SEO.astro';
+
 interface Props {
   title: string;
   description?: string;
+  image?: string;
+  type?: 'website' | 'article';
+  canonicalURL?: URL | string;
 }
 
-const { title, description = 'Austin Core Legal - Practical, Commercial, Efficient Boutique Law Firm.' } = Astro.props;
+const { 
+  title, 
+  description = 'Austin Core Legal - Practical, Commercial, Efficient Boutique Law Firm.',
+  image,
+  type,
+  canonicalURL
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -14,9 +25,8 @@ const { title, description = 'Austin Core Legal - Practical, Commercial, Efficie
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{title}</title>
+    <SEO title={title} description={description} image={image} type={type} canonicalURL={canonicalURL} />
     
     <!-- Decap CMS Identity Widget -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
@@ -36,6 +46,7 @@ const { title, description = 'Austin Core Legal - Practical, Commercial, Efficie
         <nav class="hidden md:flex gap-8 items-center text-sm font-medium text-brand-gray tracking-wide">
           <a href="/#about" class="hover:text-brand-navy transition-colors">About</a>
           <a href="/#areas" class="hover:text-brand-navy transition-colors">Practice Areas</a>
+          <a href="/blog" class="hover:text-brand-navy transition-colors">Blog</a>
           <a href="/pay" class="hover:text-brand-navy transition-colors font-semibold text-brand-navy">Pay</a>
           <a href="/contact" class="px-5 py-2.5 bg-brand-navy text-white rounded hover:bg-slate-800 transition-colors shadow-md hover:shadow-lg">Contact Us</a>
         </nav>
@@ -50,6 +61,7 @@ const { title, description = 'Austin Core Legal - Practical, Commercial, Efficie
       <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white border-t border-slate-100 shadow-lg py-4 px-6 flex-col space-y-4">
         <a href="/#about" class="block text-brand-gray hover:text-brand-navy font-medium text-lg">About</a>
         <a href="/#areas" class="block text-brand-gray hover:text-brand-navy font-medium text-lg">Practice Areas</a>
+        <a href="/blog" class="block text-brand-gray hover:text-brand-navy font-medium text-lg">Blog</a>
         <a href="/pay" class="block text-brand-navy font-semibold text-lg">Pay</a>
         <a href="/contact" class="block bg-brand-navy text-white text-center py-3 rounded-md font-medium shadow-sm">Contact Us</a>
       </div>
