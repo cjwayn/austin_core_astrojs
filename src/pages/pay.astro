@@ -1,24 +1,35 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 ---
-<Layout title="Pay an Invoice | Austin Core Legal" description="Pay your invoice securely online with Austin Core Legal">
-  <section class="pt-32 pb-24 bg-brand-light min-h-[70vh] flex flex-col justify-center items-center">
+
+<Layout
+  title="Pay an Invoice | Austin Core Legal"
+  description="Pay your invoice securely online with Austin Core Legal"
+>
+  <section
+    class="pt-32 pb-24 bg-brand-blue-pale min-h-[70vh] flex flex-col justify-center items-center"
+  >
     <div class="max-w-2xl mx-auto px-6 lg:px-8 w-full">
-      <div class="bg-white p-12 rounded-xl shadow-sm border border-slate-100 text-center">
-        <h1 class="text-4xl font-serif font-medium text-brand-navy mb-4">Pay an Invoice</h1>
-        <div class="h-1 w-24 bg-brand-gold mx-auto mb-8"></div>
-        <p class="text-brand-gray text-lg font-light leading-relaxed mb-10">
+      <div
+        class="bg-white p-12 rounded-xl shadow-sm border border-slate-100 text-center"
+      >
+        <h1 class="text-4xl font-serif font-medium text-brand-blue-deep mb-4">
+          Pay an Invoice
+        </h1>
+        <div class="h-1 w-24 bg-brand-blue mx-auto mb-8"></div>
+        <p
+          class="text-brand-text-light text-lg font-light leading-relaxed mb-10"
+        >
           Securely process your invoice payment online via Stripe.
         </p>
-        
+
         <!-- Stripe Buy Button Integration from Original Site -->
         <div class="flex justify-center">
           <script async src="https://js.stripe.com/v3/buy-button.js"></script>
           <stripe-buy-button
             buy-button-id="buy_btn_1QLNn0PuvIetGwwItKirSrnk"
             publishable-key="pk_live_51QKfyBPuvIetGwwI7nGASVKUsqeIo9YyyQxPfX8Xm841bHZqV7fKZ31a8PInUtxjaWoM985w5fSGAvqYPNTBEWBX007e1Q125R"
-          > 
-          </stripe-buy-button>
+          />
         </div>
       </div>
     </div>

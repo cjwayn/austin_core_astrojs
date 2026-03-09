@@ -1,110 +1,238 @@
 ---
-import '../styles/global.css';
-
-import SEO from '../components/SEO.astro';
+import "../styles/global.css";
 
 interface Props {
   title: string;
   description?: string;
-  image?: string;
-  type?: 'website' | 'article';
-  canonicalURL?: URL | string;
 }
 
-const { 
-  title, 
-  description = 'Austin Core Legal - Practical, Commercial, Efficient Boutique Law Firm.',
-  image,
-  type,
-  canonicalURL
+const {
+  title,
+  description = "Austin Core Legal - Practical, Commercial, Efficient Boutique Law Firm.",
 } = Astro.props;
 ---
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <SEO title={title} description={description} image={image} type={type} canonicalURL={canonicalURL} />
-    
+    <title>{title}</title>
+
     <!-- Decap CMS Identity Widget -->
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"
+    ></script>
 
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body class="flex flex-col min-h-screen">
     <!-- Navbar -->
-    <header class="fixed w-full items-center z-50 transition-all duration-300 bg-white/90 backdrop-blur-md shadow-sm">
-      <div class="max-w-7xl mx-auto px-6 lg:px-8 py-5 flex justify-between items-center">
+    <header
+      id="site-header"
+      class="fixed w-full items-center z-50 transition-all duration-500"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 lg:px-8 py-5 flex justify-between items-center"
+      >
         <a href="/" class="group block h-12">
-          <img src="/logo.png" alt="Austin Core Legal" class="h-full w-auto object-contain transition-transform group-hover:scale-105" />
+          <img
+            src="/logo.png"
+            alt="Austin Core Legal"
+            class="h-full w-auto object-contain transition-transform group-hover:scale-105"
+          />
         </a>
-        <nav class="hidden md:flex gap-8 items-center text-sm font-medium text-brand-gray tracking-wide">
-          <a href="/#about" class="hover:text-brand-navy transition-colors">About</a>
-          <a href="/#areas" class="hover:text-brand-navy transition-colors">Practice Areas</a>
-          <a href="/blog" class="hover:text-brand-navy transition-colors">Blog</a>
-          <a href="/pay" class="hover:text-brand-navy transition-colors font-semibold text-brand-navy">Pay</a>
-          <a href="/contact" class="px-5 py-2.5 bg-brand-navy text-white rounded hover:bg-slate-800 transition-colors shadow-md hover:shadow-lg">Contact Us</a>
+        <nav
+          class="hidden md:flex gap-8 items-center text-sm font-medium tracking-wide"
+        >
+          <a href="/#about" class="nav-link transition-colors duration-300"
+            >About</a
+          >
+          <a href="/#areas" class="nav-link transition-colors duration-300"
+            >Practice Areas</a
+          >
+          <a href="/blog" class="nav-link transition-colors duration-300"
+            >Blog</a
+          >
+          <a
+            href="/pay"
+            class="nav-link font-semibold transition-colors duration-300">Pay</a
+          >
+          <a
+            href="/contact"
+            class="px-6 py-2.5 bg-brand-blue-deep text-white rounded-full hover:bg-brand-blue-dark transition-all duration-300 shadow-md hover:shadow-lg font-medium"
+            >Contact Us</a
+          >
         </nav>
-        
+
         <!-- Mobile Menu Button -->
-        <button id="mobile-menu-btn" class="md:hidden flex items-center justify-center p-2 text-brand-navy hover:text-brand-gold transition-colors focus:outline-none" aria-label="Toggle menu">
-          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        <button
+          id="mobile-menu-btn"
+          class="md:hidden flex items-center justify-center p-2 text-brand-blue-deep hover:text-brand-blue transition-colors focus:outline-none"
+          aria-label="Toggle menu"
+        >
+          <svg
+            class="w-7 h-7"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
         </button>
       </div>
 
       <!-- Mobile Dropdown Menu -->
-      <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white border-t border-slate-100 shadow-lg py-4 px-6 flex-col space-y-4">
-        <a href="/#about" class="block text-brand-gray hover:text-brand-navy font-medium text-lg">About</a>
-        <a href="/#areas" class="block text-brand-gray hover:text-brand-navy font-medium text-lg">Practice Areas</a>
-        <a href="/blog" class="block text-brand-gray hover:text-brand-navy font-medium text-lg">Blog</a>
-        <a href="/pay" class="block text-brand-navy font-semibold text-lg">Pay</a>
-        <a href="/contact" class="block bg-brand-navy text-white text-center py-3 rounded-md font-medium shadow-sm">Contact Us</a>
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden absolute top-full left-0 w-full bg-white border-t border-slate-100 shadow-lg py-4 px-6 flex-col space-y-4"
+      >
+        <a
+          href="/#about"
+          class="block text-brand-text-light hover:text-brand-blue-deep font-medium text-lg"
+          >About</a
+        >
+        <a
+          href="/#areas"
+          class="block text-brand-text-light hover:text-brand-blue-deep font-medium text-lg"
+          >Practice Areas</a
+        >
+        <a
+          href="/blog"
+          class="block text-brand-text-light hover:text-brand-blue-deep font-medium text-lg"
+          >Blog</a
+        >
+        <a href="/pay" class="block text-brand-blue-deep font-semibold text-lg"
+          >Pay</a
+        >
+        <a
+          href="/contact"
+          class="block bg-brand-blue-deep text-white text-center py-3 rounded-full font-medium shadow-sm"
+          >Contact Us</a
+        >
       </div>
     </header>
 
-    <main class="flex-grow pt-24">
+    <main class="flex-grow">
       <slot />
     </main>
 
     <!-- Footer -->
-    <footer class="bg-brand-navy text-white/80 py-16 border-t border-white/10 mt-auto">
-      <div class="max-w-7xl mx-auto px-6 lg:px-8 grid md:grid-cols-3 gap-12">
+    <footer class="bg-brand-blue-dark text-white/80 py-20 mt-auto">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8 grid md:grid-cols-4 gap-12">
         <div>
           <h3 class="font-serif text-2xl text-white mb-6">Austin Core Legal</h3>
-          <p class="text-sm leading-relaxed mb-6 font-light">Practical + Commercial + Efficient</p>
-          <p class="text-xs opacity-60">ACN: 641 023 136<br/>Liability limited by a scheme approved under Professional Standards Legislation.</p>
+          <p class="text-sm leading-relaxed mb-6 font-light text-white/70">
+            Practical + Commercial + Efficient
+          </p>
+          <p class="text-xs text-white/40">
+            ACN: 641 023 136<br />Liability limited by a scheme approved under
+            Professional Standards Legislation.
+          </p>
         </div>
         <div>
-          <h4 class="font-serif text-lg text-brand-gold mb-6 tracking-wide">Contact</h4>
+          <h4 class="font-serif text-lg text-brand-blue mb-6 tracking-wide">
+            Quick Links
+          </h4>
           <ul class="space-y-3 text-sm font-light">
-            <li><a href="mailto:info@austincorelegal.com.au" class="hover:text-white transition-colors">info@austincorelegal.com.au</a></li>
-            <li><a href="tel:0481225870" class="hover:text-white transition-colors">0481 225-870</a></li>
-            <li><a href="https://www.linkedin.com/company/austin-core-legal-pty-ltd/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors flex items-center gap-2 mt-2">
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-              LinkedIn
-            </a></li>
+            <li>
+              <a
+                href="/#about"
+                class="hover:text-white transition-colors duration-300">About</a
+              >
+            </li>
+            <li>
+              <a
+                href="/#areas"
+                class="hover:text-white transition-colors duration-300"
+                >Practice Areas</a
+              >
+            </li>
+            <li>
+              <a
+                href="/blog"
+                class="hover:text-white transition-colors duration-300">Blog</a
+              >
+            </li>
+            <li>
+              <a
+                href="/pay"
+                class="hover:text-white transition-colors duration-300">Pay</a
+              >
+            </li>
           </ul>
         </div>
         <div>
-          <h4 class="font-serif text-lg text-brand-gold mb-6 tracking-wide">Offices</h4>
+          <h4 class="font-serif text-lg text-brand-blue mb-6 tracking-wide">
+            Contact
+          </h4>
+          <ul class="space-y-3 text-sm font-light">
+            <li>
+              <a
+                href="mailto:info@austincorelegal.com.au"
+                class="hover:text-white transition-colors duration-300"
+                >info@austincorelegal.com.au</a
+              >
+            </li>
+            <li>
+              <a
+                href="tel:0481225870"
+                class="hover:text-white transition-colors duration-300"
+                >0481 225-870</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/company/austin-core-legal-pty-ltd/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hover:text-white transition-colors duration-300 flex items-center gap-2 mt-2"
+              >
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"
+                  ><path
+                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+                  ></path>
+                </svg>
+                LinkedIn
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-serif text-lg text-brand-blue mb-6 tracking-wide">
+            Offices
+          </h4>
           <div class="space-y-6 text-sm font-light">
             <div>
               <p class="font-medium text-white mb-1">Sydney (By Appointment)</p>
-              <p>Suite 10 Level 3, 88 Pitt Street<br/>Sydney NSW 2000</p>
+              <p class="text-white/60">
+                Suite 10 Level 3, 88 Pitt Street<br />Sydney NSW 2000
+              </p>
             </div>
             <div>
-              <p class="font-medium text-white mb-1">Melbourne (By Appointment)</p>
-              <p>Suite 42, 139 Cardigan St<br/>Carlton VIC 3053</p>
+              <p class="font-medium text-white mb-1">
+                Melbourne (By Appointment)
+              </p>
+              <p class="text-white/60">
+                Suite 42, 139 Cardigan St<br />Carlton VIC 3053
+              </p>
             </div>
           </div>
         </div>
       </div>
-      <div class="max-w-7xl mx-auto px-6 lg:px-8 mt-16 pt-8 border-t border-white/10 text-xs text-center font-light opacity-60">
+      <div
+        class="max-w-7xl mx-auto px-6 lg:px-8 mt-16 pt-8 border-t border-white/10 text-xs text-center font-light text-white/40"
+      >
         &copy; {new Date().getFullYear()} Austin Core Legal Pty Ltd. All rights reserved.
       </div>
     </footer>
@@ -124,26 +252,114 @@ const {
 
     <!-- Mobile Menu Script -->
     <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-        
+      document.addEventListener("DOMContentLoaded", () => {
+        const btn = document.getElementById("mobile-menu-btn");
+        const menu = document.getElementById("mobile-menu");
+
         if (btn && menu) {
-          btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-            menu.classList.toggle('flex');
+          btn.addEventListener("click", () => {
+            menu.classList.toggle("hidden");
+            menu.classList.toggle("flex");
           });
-          
+
           // Close menu when clicking any link
-          const links = menu.querySelectorAll('a');
-          links.forEach(link => {
-            link.addEventListener('click', () => {
-              menu.classList.add('hidden');
-              menu.classList.remove('flex');
+          const links = menu.querySelectorAll("a");
+          links.forEach((link) => {
+            link.addEventListener("click", () => {
+              menu.classList.add("hidden");
+              menu.classList.remove("flex");
             });
           });
         }
       });
     </script>
+
+    <!-- Scroll-based Navbar -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const header = document.getElementById("site-header");
+        const navLinks = document.querySelectorAll(".nav-link");
+        if (!header) return;
+
+        const updateNav = () => {
+          if (window.scrollY > 80) {
+            header.classList.add(
+              "bg-white/95",
+              "backdrop-blur-md",
+              "shadow-sm"
+            );
+            header.classList.remove("bg-transparent");
+            navLinks.forEach((l) => {
+              l.classList.remove("text-white/80", "hover:text-white");
+              l.classList.add(
+                "text-brand-text-light",
+                "hover:text-brand-blue-deep"
+              );
+            });
+          } else {
+            header.classList.remove(
+              "bg-white/95",
+              "backdrop-blur-md",
+              "shadow-sm"
+            );
+            header.classList.add("bg-transparent");
+            navLinks.forEach((l) => {
+              l.classList.add("text-white/80", "hover:text-white");
+              l.classList.remove(
+                "text-brand-text-light",
+                "hover:text-brand-blue-deep"
+              );
+            });
+          }
+        };
+
+        updateNav();
+        window.addEventListener("scroll", updateNav, { passive: true });
+      });
+    </script>
+
+    <!-- Intersection Observer for fade-in animations -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const observerOptions = {
+          threshold: 0.15,
+          rootMargin: "0px 0px -50px 0px",
+        };
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("animate-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, observerOptions);
+
+        document
+          .querySelectorAll(".animate-on-scroll")
+          .forEach((el) => observer.observe(el));
+      });
+    </script>
+
+    <style is:global>
+      .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .animate-on-scroll.animate-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .animate-on-scroll.animate-delay-1 {
+        transition-delay: 0.15s;
+      }
+      .animate-on-scroll.animate-delay-2 {
+        transition-delay: 0.3s;
+      }
+      .animate-on-scroll.animate-delay-3 {
+        transition-delay: 0.45s;
+      }
+    </style>
   </body>
 </html>

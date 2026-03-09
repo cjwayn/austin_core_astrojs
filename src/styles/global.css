@@ -1,10 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-navy: #0B192C;
+  /* ── Light Blue Palette (from Austin Core Legal brand) ── */
+  --color-brand-blue: #8eb6dc;
+  --color-brand-blue-deep: #10629a;
+  --color-brand-blue-dark: #0a3d5c;
+  --color-brand-blue-light: #dce8f3;
+  --color-brand-blue-pale: #f0f5fa;
+  --color-brand-white: #ffffff;
+  --color-brand-text: #1e293b;
+  --color-brand-text-light: #64748b;
   --color-brand-gold: #D4AF37;
-  --color-brand-light: #F8F9FA;
-  --color-brand-gray: #4A5568;
 
   --font-serif: "Playfair Display", serif;
   --font-sans: "Inter", sans-serif;
@@ -13,8 +19,8 @@
 html {
   scroll-behavior: smooth;
   font-family: var(--font-sans);
-  background-color: var(--color-brand-light);
-  color: #1A202C;
+  background-color: var(--color-brand-white);
+  color: var(--color-brand-text);
 }
 
 body {
@@ -23,12 +29,17 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-serif);
-  color: var(--color-brand-navy);
+  color: var(--color-brand-blue-deep);
 }
 
 ::selection {
-  background-color: var(--color-brand-navy);
+  background-color: var(--color-brand-blue-deep);
   color: white;
 }

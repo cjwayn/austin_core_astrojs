@@ -1,130 +1,626 @@
 ---
-import { getCollection } from 'astro:content';
-import Layout from '../layouts/Layout.astro';
-import PracticeAreaCard from '../components/PracticeAreaCard.astro';
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import PracticeAreaCard from "../components/PracticeAreaCard.astro";
 
-const practiceAreas = await getCollection('practice-areas');
+const practiceAreas = await getCollection("practice-areas");
 ---
 
-<Layout title="Austin Core Legal | Professional Boutique Law Firm">
-  
-  <!-- Hero Section -->
-  <section class="relative min-h-[85vh] flex items-center bg-brand-navy text-white overflow-hidden">
-    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-10"></div>
-    <div class="absolute inset-0 bg-gradient-to-r from-brand-navy via-brand-navy/90 to-transparent"></div>
-    
-    <div class="relative max-w-7xl mx-auto px-6 lg:px-8 py-24 z-10 w-full animate-fade-in-up">
-      <div class="max-w-3xl">
+<Layout title="Austin Core Legal | Practical · Commercial · Efficient">
+  <!-- ═══════════════════════════════════════════════════
+       SECTION 1 — HERO
+       Full-viewport, atmospheric, bold statement
+       ═══════════════════════════════════════════════════ -->
+  <section class="relative min-h-screen flex items-center overflow-hidden">
+    <!-- Background image -->
+    <div
+      class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-center"
+    >
+    </div>
+    <!-- Gradient overlay -->
+    <div
+      class="absolute inset-0 bg-gradient-to-br from-brand-blue-dark/95 via-brand-blue-deep/85 to-brand-blue/40"
+    >
+    </div>
+    <!-- Subtle geometric pattern -->
+    <div
+      class="absolute inset-0 opacity-[0.04]"
+      style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"
+    >
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-8 py-32 z-10 w-full">
+      <div class="max-w-3xl hero-animate">
         <div class="inline-flex items-center gap-3 mb-8">
-          <span class="h-px w-12 bg-brand-gold"></span>
-          <span class="text-brand-gold uppercase tracking-widest text-sm font-semibold">Practical. Commercial. Efficient.</span>
+          <span class="h-px w-16 bg-brand-blue"></span>
+          <span
+            class="text-brand-blue uppercase tracking-[0.25em] text-xs font-semibold"
+            >Boutique Law Firm</span
+          >
         </div>
-        <h1 class="text-5xl md:text-7xl font-serif font-medium leading-tight mb-8">
-          Practical. Commercial. <br/><span class="text-brand-gold italic">Efficient.</span>
+        <h1
+          class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-medium leading-[1.05] mb-8 text-white"
+        >
+          Practical.<br />
+          Commercial.<br />
+          <span class="italic text-brand-blue">Efficient.</span>
         </h1>
-        <p class="text-lg md:text-xl text-white/80 font-light leading-relaxed mb-12 max-w-2xl">
-          A boutique law firm with a strong focus on providing tailored legal services to individuals and businesses.
-          <strong class="font-normal block mt-4 tracking-wide text-white">FLEXIBLE. ACCURATE. PROFESSIONAL.</strong>
+        <p
+          class="text-lg md:text-xl text-white/70 font-light leading-relaxed mb-12 max-w-xl"
+        >
+          Tailored legal services with a focus on delivering real outcomes for
+          individuals and businesses.
         </p>
-        <div class="flex gap-4">
-          <a href="#areas" class="px-8 py-4 bg-brand-gold text-brand-navy font-semibold hover:bg-amber-400 transition-colors shadow-lg hover:shadow-xl rounded">
+        <div class="flex flex-wrap gap-4">
+          <a
+            href="#areas"
+            class="group px-8 py-4 bg-white text-brand-blue-deep font-semibold hover:bg-brand-blue-light transition-all duration-300 shadow-lg hover:shadow-xl rounded-full inline-flex items-center gap-2"
+          >
             Our Practice Areas
+            <svg
+              class="w-4 h-4 group-hover:translate-x-1 transition-transform"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            </svg>
           </a>
-          <a href="/contact" class="px-8 py-4 border border-white/30 hover:border-white hover:bg-white/5 transition-all rounded font-medium">
+          <a
+            href="/contact"
+            class="px-8 py-4 border border-white/30 text-white hover:border-white hover:bg-white/10 transition-all duration-300 rounded-full font-medium backdrop-blur-sm"
+          >
             Get in Touch
           </a>
         </div>
       </div>
     </div>
+
+    <!-- Scroll indicator -->
+    <div
+      class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-white/40"
+    >
+      <span class="text-[10px] uppercase tracking-[0.3em] font-light"
+        >Scroll</span
+      >
+      <div class="w-px h-8 bg-white/20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-white/60 animate-scroll-line"></div>
+      </div>
+    </div>
   </section>
 
-  <!-- About Section -->
-  <section id="about" class="py-24 bg-white">
+  <!-- ═══════════════════════════════════════════════════
+       SECTION 2 — VALUE PROPOSITION STRIP
+       Three pillars: Practical, Commercial, Efficient
+       ═══════════════════════════════════════════════════ -->
+  <section class="py-20 md:py-24 bg-white relative">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="grid md:grid-cols-2 gap-16 items-center">
-        <div class="relative">
-          <div class="absolute inset-0 bg-brand-gold/10 -mt-6 -ml-6 rounded-tr-3xl rounded-bl-3xl"></div>
-          <img src="/megan-zhou.jpg" alt="Megan Austin - Principal Director" class="relative z-10 w-full rounded shadow-xl object-cover h-[600px] object-center" />
+      <div
+        class="grid md:grid-cols-3 gap-0 md:divide-x divide-brand-blue-light"
+      >
+        <div class="animate-on-scroll text-center px-8 py-8 md:py-0">
+          <div
+            class="w-14 h-14 mx-auto mb-6 rounded-2xl bg-brand-blue-pale flex items-center justify-center"
+          >
+            <svg
+              class="w-7 h-7 text-brand-blue-deep"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+              ></path>
+            </svg>
+          </div>
+          <h3
+            class="text-xl font-serif font-semibold text-brand-blue-deep mb-3"
+          >
+            Practical
+          </h3>
+          <p
+            class="text-brand-text-light text-sm leading-relaxed font-light max-w-xs mx-auto"
+          >
+            Pragmatic advice designed to solve real-world problems with clarity
+            and precision.
+          </p>
+        </div>
+
+        <div
+          class="animate-on-scroll animate-delay-1 text-center px-8 py-8 md:py-0"
+        >
+          <div
+            class="w-14 h-14 mx-auto mb-6 rounded-2xl bg-brand-blue-pale flex items-center justify-center"
+          >
+            <svg
+              class="w-7 h-7 text-brand-blue-deep"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+            </svg>
+          </div>
+          <h3
+            class="text-xl font-serif font-semibold text-brand-blue-deep mb-3"
+          >
+            Commercial
+          </h3>
+          <p
+            class="text-brand-text-light text-sm leading-relaxed font-light max-w-xs mx-auto"
+          >
+            Commercially-minded counsel that always keeps your business
+            objectives front of mind.
+          </p>
+        </div>
+
+        <div
+          class="animate-on-scroll animate-delay-2 text-center px-8 py-8 md:py-0"
+        >
+          <div
+            class="w-14 h-14 mx-auto mb-6 rounded-2xl bg-brand-blue-pale flex items-center justify-center"
+          >
+            <svg
+              class="w-7 h-7 text-brand-blue-deep"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3
+            class="text-xl font-serif font-semibold text-brand-blue-deep mb-3"
+          >
+            Efficient
+          </h3>
+          <p
+            class="text-brand-text-light text-sm leading-relaxed font-light max-w-xs mx-auto"
+          >
+            Streamlined processes and transparent fees so you know exactly where
+            you stand.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       SECTION 3 — ABOUT / MISSION
+       Two-column editorial layout
+       ═══════════════════════════════════════════════════ -->
+  <section
+    id="about"
+    class="py-24 md:py-32 bg-brand-blue-pale relative overflow-hidden"
+  >
+    <!-- Subtle background texture -->
+    <div
+      class="absolute top-0 right-0 w-1/2 h-full opacity-[0.03]"
+      style="background-image: radial-gradient(circle at 2px 2px, var(--color-brand-blue-deep) 1px, transparent 0); background-size: 32px 32px;"
+    >
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <!-- Image Side -->
+        <div class="animate-on-scroll relative">
+          <div
+            class="absolute -top-4 -left-4 w-full h-full bg-brand-blue/20 rounded-2xl"
+          >
+          </div>
+          <div
+            class="absolute -bottom-4 -right-4 w-32 h-32 border-2 border-brand-blue/30 rounded-2xl"
+          >
+          </div>
+          <img
+            src="/megan-zhou.jpg"
+            alt="Megan Zhou - Principal & Founder"
+            class="relative z-10 w-full rounded-2xl shadow-2xl object-cover h-[500px] lg:h-[600px] object-center"
+          />
+        </div>
+
+        <!-- Text Side -->
+        <div class="animate-on-scroll animate-delay-1">
+          <div class="inline-flex items-center gap-3 mb-6">
+            <span class="h-px w-12 bg-brand-blue-deep"></span>
+            <span
+              class="text-brand-blue-deep uppercase tracking-[0.2em] text-xs font-semibold"
+              >About Our Firm</span
+            >
+          </div>
+          <h2
+            class="text-4xl md:text-5xl font-serif font-medium text-brand-blue-deep leading-tight mb-8"
+          >
+            Progressive, Value<br />
+            <span class="italic text-brand-blue">& Results Driven</span>
+          </h2>
+          <div
+            class="space-y-5 text-brand-text-light text-base leading-relaxed font-light"
+          >
+            <p>
+              Austin Core Legal is a boutique law firm with a strong focus on
+              providing practical, commercial and efficient legal services
+              tailored to the needs of each of our individual clients and
+              businesses.
+            </p>
+            <p>
+              Founded by Megan Zhou, a lawyer admitted to practice in the
+              Supreme Court of New South Wales and the High Court of Australia,
+              we take a progressive and innovative approach in dealing with all
+              legal matters.
+            </p>
+            <p class="font-medium text-brand-blue-deep tracking-wide">
+              FLEXIBLE. ACCURATE. PROFESSIONAL.
+            </p>
+          </div>
+          <div class="mt-10 flex flex-wrap gap-6">
+            <a
+              href="mailto:megan.zhou@austincorelegal.com.au"
+              class="inline-flex items-center gap-2 text-brand-blue-deep font-semibold hover:text-brand-blue transition-colors duration-300 text-sm"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                ></path>
+              </svg>
+              Contact Megan
+            </a>
+            <a
+              href="https://www.linkedin.com/in/megan-zhou-19171810b/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 text-brand-blue-deep font-semibold hover:text-brand-blue transition-colors duration-300 border-l border-brand-blue-light pl-6 text-sm"
+            >
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"
+                ><path
+                  d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+                ></path>
+              </svg>
+              Connect on LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       SECTION 4 — PRACTICE AREAS
+       Redesigned card grid
+       ═══════════════════════════════════════════════════ -->
+  <section id="areas" class="py-24 md:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-16 animate-on-scroll">
+        <div class="inline-flex items-center gap-3 mb-6">
+          <span class="h-px w-12 bg-brand-blue-deep"></span>
+          <span
+            class="text-brand-blue-deep uppercase tracking-[0.2em] text-xs font-semibold"
+            >What We Do</span
+          >
+          <span class="h-px w-12 bg-brand-blue-deep"></span>
+        </div>
+        <h2
+          class="text-4xl md:text-5xl font-serif font-medium text-brand-blue-deep mb-4"
+        >
+          Areas of Practice
+        </h2>
+        <p class="text-brand-text-light font-light max-w-2xl mx-auto">
+          Comprehensive legal expertise across a range of practice areas,
+          delivered with the personalised attention of a boutique firm.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {
+          practiceAreas.map((area, i) => (
+            <div
+              class:list={[
+                "animate-on-scroll",
+                i % 3 === 1
+                  ? "animate-delay-1"
+                  : i % 3 === 2
+                  ? "animate-delay-2"
+                  : "",
+              ]}
+            >
+              <PracticeAreaCard
+                title={area.data.title}
+                description={area.data.description}
+              />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       SECTION 5 — INSPIRATIONAL QUOTE BAND
+       Full-width deep blue
+       ═══════════════════════════════════════════════════ -->
+  <section class="py-24 md:py-32 bg-brand-blue-deep relative overflow-hidden">
+    <!-- Background pattern -->
+    <div
+      class="absolute inset-0 opacity-[0.05]"
+      style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 48px 48px;"
+    >
+    </div>
+
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center animate-on-scroll">
+      <svg
+        class="w-16 h-16 text-brand-blue/30 mx-auto mb-10"
+        fill="currentColor"
+        viewBox="0 0 32 32"
+        aria-hidden="true"
+        ><path
+          d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"
+        ></path>
+      </svg>
+      <blockquote
+        class="text-3xl md:text-4xl lg:text-5xl font-serif text-white leading-snug mb-10 font-light italic"
+      >
+        "We must all obey the great law of change. It is the most powerful law
+        of nature."
+      </blockquote>
+      <cite
+        class="text-brand-blue font-medium uppercase tracking-[0.25em] text-sm not-italic"
+        >— Edmund Burke</cite
+      >
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       SECTION 6 — MEET THE PRINCIPAL
+       Card-style bio with modern layout
+       ═══════════════════════════════════════════════════ -->
+  <section class="py-24 md:py-32 bg-brand-blue-pale">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-5 gap-12 items-center">
+        <!-- Text Side (3 cols) -->
+        <div class="lg:col-span-3 animate-on-scroll">
+          <div class="inline-flex items-center gap-3 mb-6">
+            <span class="h-px w-12 bg-brand-blue-deep"></span>
+            <span
+              class="text-brand-blue-deep uppercase tracking-[0.2em] text-xs font-semibold"
+              >Our Team</span
+            >
+          </div>
+          <h2
+            class="text-4xl md:text-5xl font-serif font-medium text-brand-blue-deep mb-3"
+          >
+            Megan Zhou
+          </h2>
+          <p class="text-brand-blue text-xl font-serif italic mb-8">
+            Principal & Founder
+          </p>
+
+          <div
+            class="space-y-5 text-brand-text-light text-base leading-relaxed font-light"
+          >
+            <p>
+              Megan takes a progressive and innovative approach in dealing with
+              all legal matters. She will always strive to provide her clients
+              with accurate, commercial, practical, and efficient legal advice.
+            </p>
+            <p>
+              With extensive experience spanning from 2011 in boutique and
+              specialised law firms, Megan operates an "end-to-end" legal
+              service. She is admitted to practice in the Supreme Court of New
+              South Wales and the High Court of Australia.
+            </p>
+          </div>
+
+          <!-- Specialisations -->
+          <div class="mt-10 grid sm:grid-cols-2 gap-3">
+            <div
+              class="flex items-center gap-3 text-sm text-brand-text bg-white/60 backdrop-blur-sm px-4 py-3 rounded-lg"
+            >
+              <svg
+                class="w-4 h-4 text-brand-blue-deep shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"></path>
+              </svg>
+              Commercial litigation & debt recovery
+            </div>
+            <div
+              class="flex items-center gap-3 text-sm text-brand-text bg-white/60 backdrop-blur-sm px-4 py-3 rounded-lg"
+            >
+              <svg
+                class="w-4 h-4 text-brand-blue-deep shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"></path>
+              </svg>
+              Insolvency asset recovery
+            </div>
+            <div
+              class="flex items-center gap-3 text-sm text-brand-text bg-white/60 backdrop-blur-sm px-4 py-3 rounded-lg"
+            >
+              <svg
+                class="w-4 h-4 text-brand-blue-deep shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"></path>
+              </svg>
+              Complex property transactions
+            </div>
+            <div
+              class="flex items-center gap-3 text-sm text-brand-text bg-white/60 backdrop-blur-sm px-4 py-3 rounded-lg"
+            >
+              <svg
+                class="w-4 h-4 text-brand-blue-deep shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"></path>
+              </svg>
+              Security enforcement for creditors
+            </div>
+          </div>
+        </div>
+
+        <!-- Image Side (2 cols) -->
+        <div class="lg:col-span-2 animate-on-scroll animate-delay-1">
+          <div class="relative">
+            <div
+              class="absolute -top-3 -right-3 w-full h-full border-2 border-brand-blue/30 rounded-2xl"
+            >
+            </div>
+            <img
+              src="/megan.jpg"
+              alt="Megan Zhou"
+              class="relative z-10 w-full rounded-2xl shadow-xl object-cover h-[450px] object-center"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       SECTION 7 — CTA BAND
+       Gradient contact section
+       ═══════════════════════════════════════════════════ -->
+  <section class="relative py-24 md:py-32 overflow-hidden">
+    <!-- Gradient background -->
+    <div
+      class="absolute inset-0 bg-gradient-to-br from-brand-blue-deep via-brand-blue-dark to-brand-blue-deep"
+    >
+    </div>
+    <!-- Pattern overlay -->
+    <div
+      class="absolute inset-0 opacity-[0.04]"
+      style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 36px 36px;"
+    >
+    </div>
+
+    <div
+      class="relative max-w-4xl mx-auto px-6 lg:px-8 text-center z-10 animate-on-scroll"
+    >
+      <h2 class="text-4xl md:text-5xl font-serif font-medium text-white mb-6">
+        Ready to Get Started?
+      </h2>
+      <p class="text-xl text-white/70 font-light mb-12 max-w-2xl mx-auto">
+        Whether you need expert legal advice or representation, we're here to
+        help. Reach out for a confidential consultation.
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-4 mb-16">
+        <a
+          href="/contact"
+          class="group px-10 py-4 bg-white text-brand-blue-deep font-semibold hover:bg-brand-blue-light transition-all duration-300 shadow-lg hover:shadow-xl rounded-full inline-flex items-center gap-2 text-lg"
+        >
+          Contact Us
+          <svg
+            class="w-5 h-5 group-hover:translate-x-1 transition-transform"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+          </svg>
+        </a>
+        <a
+          href="tel:0481225870"
+          class="px-10 py-4 border border-white/30 text-white hover:border-white hover:bg-white/10 transition-all duration-300 rounded-full font-medium backdrop-blur-sm text-lg"
+        >
+          0481 225-870
+        </a>
+      </div>
+
+      <!-- Contact details -->
+      <div
+        class="grid sm:grid-cols-2 gap-8 text-white/60 text-sm font-light max-w-lg mx-auto"
+      >
+        <div>
+          <p class="text-white/40 uppercase tracking-[0.2em] text-xs mb-2">
+            Email
+          </p>
+          <a
+            href="mailto:info@austincorelegal.com.au"
+            class="hover:text-white transition-colors duration-300"
+            >info@austincorelegal.com.au</a
+          >
         </div>
         <div>
-          <div class="inline-flex items-center gap-3 mb-6">
-            <span class="h-px w-12 bg-brand-gold"></span>
-            <span class="text-brand-gold uppercase tracking-widest text-sm font-semibold">Our Team</span>
-          </div>
-          <h2 class="text-4xl font-serif font-medium text-brand-navy mb-8">
-            Megan Zhou <br/><span class="text-brand-gray font-light text-3xl">Principal & Founder</span>
-          </h2>
-          <div class="space-y-6 text-lg text-brand-gray font-light leading-relaxed">
-            <p>
-              Megan Zhou, the principal and founder of Austin Core Legal Pty Ltd, takes a progressive and innovative approach in dealing with all legal matters. She will always strive to provide her clients with accurate, commercial, practical, and efficient legal advice.
-            </p>
-            <p>
-              With extensive experience spanning from 2011 in boutique and specialized law firms, Megan operates an "end-to-end" legal service. She takes a personal interest in Bankruptcy and Property law, and is admitted to practice in the Supreme Court of New South Wales and the High Court of Australia.
-            </p>
-            <ul class="list-disc pl-5 mt-4 space-y-2 text-base">
-              <li>Commercial litigation and debt recovery for businesses</li>
-              <li>Acting for Insolvency Practitioners on recovery and realisation of assets</li>
-              <li>Property transactions, including complex conveyancing</li>
-              <li>Acting for secured creditors & mortgagees on enforcement of securities</li>
-            </ul>
-          </div>
-          <div class="mt-10 flex gap-4">
-            <a href="mailto:megan.zhou@austincorelegal.com.au" class="inline-flex items-center gap-2 text-brand-navy font-semibold hover:text-brand-gold transition-colors">
-              <span>Contact Megan</span>
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"></path></svg>
-            </a>
-            <a href="https://www.linkedin.com/in/megan-zhou-19171810b/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-brand-navy font-semibold hover:text-brand-gold transition-colors ml-4 border-l border-slate-300 pl-4">
-              <span>Connect</span>
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-            </a>
-          </div>
+          <p class="text-white/40 uppercase tracking-[0.2em] text-xs mb-2">
+            Office
+          </p>
+          <p>Suite 10 Level 3, 88 Pitt St<br />Sydney NSW 2000</p>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- Quote Section -->
-  <section class="py-24 bg-white text-center px-6">
-    <div class="max-w-4xl mx-auto">
-      <svg class="w-12 h-12 text-brand-gold/30 mx-auto mb-8" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true"><path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"/></svg>
-      <blockquote class="text-3xl md:text-4xl font-serif text-brand-navy leading-snug mb-8">
-        "We must all obey the great law of change. It is the most powerful law of nature."
-      </blockquote>
-      <cite class="text-brand-gray font-medium uppercase tracking-widest text-sm">— Edmund Burke</cite>
-    </div>
-  </section>
-
-  <!-- Practice Areas Section -->
-  <section id="areas" class="py-24 bg-brand-light">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl font-serif font-medium text-brand-navy mb-4">Areas of Practice</h2>
-        <div class="h-1 w-24 bg-brand-gold mx-auto"></div>
-      </div>
-      
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {practiceAreas.map((area) => (
-          <PracticeAreaCard 
-            title={area.data.title} 
-            description={area.data.description}
-          />
-        ))}
-      </div>
-    </div>
-  </section>
-
 </Layout>
 
 <style>
-  .animate-fade-in-up {
-    animation: fadeInUp 1s ease-out forwards;
+  /* Hero entrance animations */
+  .hero-animate {
+    animation: heroFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(40px);
   }
-  @keyframes fadeInUp {
+  @keyframes heroFadeIn {
     to {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+
+  /* Scroll indicator animation */
+  .animate-scroll-line {
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+  @keyframes scrollLine {
+    0% {
+      transform: translateY(-100%);
+    }
+    50% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(100%);
     }
   }
 </style>
