@@ -1,10 +1,42 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+const contactFaqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "How can I contact Austin Core Legal?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "You can contact Austin Core Legal by email at info@austincorelegal.com.au or by phone on 0481 225-870.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Where are Austin Core Legal offices located?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Austin Core Legal offers appointments in Sydney at Suite 10 Level 3, 88 Pitt Street, Sydney NSW 2000, and in Melbourne at Suite 42, 139 Cardigan St, Carlton VIC 3053.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Do I need an appointment before visiting?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes, both Sydney and Melbourne consultations are available by appointment.",
+      },
+    },
+  ],
+};
 ---
 
 <Layout
   title="Contact Us | Austin Core Legal"
   description="Contact Austin Core Legal in Sydney or Melbourne"
+  structuredData={contactFaqSchema}
 >
   <section class="pt-32 pb-24 bg-brand-blue-pale min-h-[70vh]">
     <div class="max-w-4xl mx-auto px-6 lg:px-8">
@@ -168,6 +200,54 @@ import Layout from "../layouts/Layout.astro";
         >
         </iframe>
       </div>
+
+      <section class="mt-16 bg-white p-10 rounded-xl shadow-sm border border-slate-100">
+        <h2 class="text-3xl font-serif text-brand-blue-deep mb-8">
+          Contact FAQs
+        </h2>
+        <div class="space-y-6">
+          <div>
+            <h3 class="text-xl font-serif text-brand-blue-deep mb-2">
+              How can I contact Austin Core Legal?
+            </h3>
+            <p class="text-brand-text-light leading-relaxed">
+              You can contact Austin Core Legal by email at
+              <a
+                href="mailto:info@austincorelegal.com.au"
+                class="text-brand-blue-deep hover:text-brand-blue"
+              >
+                info@austincorelegal.com.au
+              </a>
+              or by phone on
+              <a
+                href="tel:0481225870"
+                class="text-brand-blue-deep hover:text-brand-blue"
+              >
+                0481 225-870
+              </a>.
+            </p>
+          </div>
+          <div>
+            <h3 class="text-xl font-serif text-brand-blue-deep mb-2">
+              Where are Austin Core Legal offices located?
+            </h3>
+            <p class="text-brand-text-light leading-relaxed">
+              Appointments are available in Sydney at Suite 10 Level 3, 88 Pitt
+              Street, Sydney NSW 2000, and in Melbourne at Suite 42, 139
+              Cardigan St, Carlton VIC 3053.
+            </p>
+          </div>
+          <div>
+            <h3 class="text-xl font-serif text-brand-blue-deep mb-2">
+              Do I need an appointment before visiting?
+            </h3>
+            <p class="text-brand-text-light leading-relaxed">
+              Yes, both Sydney and Melbourne consultations are available by
+              appointment.
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
   </section>
 </Layout>

@@ -4,22 +4,91 @@ import "../styles/global.css";
 interface Props {
   title: string;
   description?: string;
+  image?: string;
+  type?: "website" | "article";
+  noindex?: boolean;
+  structuredData?: Record<string, unknown> | Array<Record<string, unknown>>;
 }
 
 const {
   title,
   description = "Austin Core Legal - Practical, Commercial, Efficient Boutique Law Firm.",
+  image = "/logo.png",
+  type = "website",
+  noindex = false,
+  structuredData,
 } = Astro.props;
+
+const siteName = "Austin Core Legal";
+const titleWithBrand = title.includes(siteName) ? title : `${title} | ${siteName}`;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
+const socialImageURL = new URL(image, Astro.site ?? Astro.url);
+const robotsContent = noindex
+  ? "noindex, nofollow"
+  : "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1";
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  name: siteName,
+  url: Astro.site?.toString() ?? canonicalURL.origin,
+  logo: new URL("/logo.png", Astro.site ?? Astro.url).toString(),
+  email: "info@austincorelegal.com.au",
+  telephone: "0481 225-870",
+  sameAs: ["https://www.linkedin.com/company/austin-core-legal-pty-ltd/"],
+  address: [
+    {
+      "@type": "PostalAddress",
+      streetAddress: "Suite 10 Level 3, 88 Pitt Street",
+      addressLocality: "Sydney",
+      addressRegion: "NSW",
+      postalCode: "2000",
+      addressCountry: "AU",
+    },
+    {
+      "@type": "PostalAddress",
+      streetAddress: "Suite 42, 139 Cardigan St",
+      addressLocality: "Carlton",
+      addressRegion: "VIC",
+      postalCode: "3053",
+      addressCountry: "AU",
+    },
+  ],
+};
+
+const schemas = [
+  organizationSchema,
+  ...(structuredData
+    ? Array.isArray(structuredData)
+      ? structuredData
+      : [structuredData]
+    : []),
+];
 ---
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <meta name="robots" content={robotsContent} />
+    <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{title}</title>
+    <title>{titleWithBrand}</title>
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={titleWithBrand} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={socialImageURL} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={titleWithBrand} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImageURL} />
+    {schemas.map((schema) => (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))}
 
     <!-- Decap CMS Identity Widget -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"
