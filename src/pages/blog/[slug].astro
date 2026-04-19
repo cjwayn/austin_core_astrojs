@@ -12,6 +12,29 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: entry.data.title,
+  description: entry.data.description,
+  image: entry.data.image
+    ? [new URL(entry.data.image, Astro.site ?? Astro.url).toString()]
+    : undefined,
+  datePublished: entry.data.date.toISOString(),
+  dateModified: entry.data.date.toISOString(),
+  author: {
+    "@type": "Person",
+    name: entry.data.author,
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "Austin Core Legal",
+    logo: {
+      "@type": "ImageObject",
+      url: new URL("/logo.png", Astro.site ?? Astro.url).toString(),
+    },
+  },
+};
 ---
 
 <Layout
@@ -19,6 +42,7 @@ const { Content } = await entry.render();
   description={entry.data.description}
   image={entry.data.image}
   type="article"
+  structuredData={articleSchema}
 >
   <article class="max-w-3xl mx-auto px-6 py-16">
     <header class="mb-12 text-center md:text-left">
