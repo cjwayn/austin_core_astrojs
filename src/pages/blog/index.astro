@@ -28,7 +28,7 @@ const sortedPosts = posts.sort(
       {
         sortedPosts.map((post) => (
           <a
-            href={`/blog/${post.slug}`}
+            href={`/blog/${post.id}`}
             class="group flex flex-col bg-white border border-slate-100 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
           >
             {post.data.image && (
