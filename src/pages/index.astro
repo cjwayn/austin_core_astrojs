@@ -11,28 +11,37 @@ const practiceAreas = await getCollection("practice-areas");
        SECTION 1 — HERO
        Full-viewport, atmospheric, bold statement
        ═══════════════════════════════════════════════════ -->
-  <section class="relative min-h-screen flex items-center overflow-hidden">
-    <!-- Background image -->
-    <div
-      class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-center"
-    >
-    </div>
-    <!-- Gradient overlay - Darkened for better contrast -->
-    <div
-      class="absolute inset-0 bg-gradient-to-br from-gray-900/95 via-brand-blue-dark/90 to-brand-blue-deep/80"
-    >
-    </div>
-    <!-- Subtle geometric pattern -->
-    <div
-      class="absolute inset-0 opacity-[0.04]"
-      style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"
-    >
+  <section class="relative min-h-screen flex items-center overflow-hidden bg-brand-blue-deep">
+    <!-- Sharp diagonal colour split -->
+    <div class="absolute inset-0 overflow-hidden">
+      <!-- Bold electric blue gradient base -->
+      <div class="absolute inset-0 bg-gradient-to-135 from-[#0a1628] via-brand-blue-deep to-[#0d4f82]"></div>
+      <!-- Sharp diagonal gold accent slab -->
+      <div
+        class="absolute -right-40 top-0 h-full w-[55%] bg-brand-gold/[0.07]"
+        style="clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);"
+      ></div>
+      <!-- Vivid vertical gold stripe -->
+      <div
+        class="absolute top-0 h-full w-1 bg-brand-gold"
+        style="left: 42%;"
+      ></div>
+      <!-- Bold horizontal rule -->
+      <div class="absolute top-1/2 left-0 right-0 h-px bg-white/5"></div>
+      <!-- Sharp corner accent top-right -->
+      <div
+        class="absolute top-0 right-0 w-64 h-64 border-l border-b border-brand-gold/20"
+        style="clip-path: polygon(100% 0%, 0% 0%, 100% 100%);"
+      ></div>
+      <!-- Bottom-left corner accent -->
+      <div class="absolute bottom-0 left-0 w-48 h-48 border-t border-r border-brand-gold/15"></div>
     </div>
 
     <div class="relative max-w-7xl mx-auto px-6 lg:px-8 py-32 z-10 w-full">
       <div class="max-w-3xl hero-animate">
         <div class="inline-flex items-center gap-3 mb-8">
-          <span class="h-px w-16 bg-brand-gold"></span>
+          <span class="h-1 w-12 bg-brand-gold"></span>
+          <span class="h-px w-6 bg-brand-gold/40"></span>
           <span
             class="text-brand-gold uppercase tracking-[0.25em] text-xs font-semibold"
             >Boutique Law Firm</span
@@ -46,7 +55,7 @@ const practiceAreas = await getCollection("practice-areas");
           <span class="italic text-brand-gold">Efficient.</span>
         </h1>
         <p
-          class="text-lg md:text-xl text-white/70 font-light leading-relaxed mb-12 max-w-xl"
+          class="text-lg md:text-xl text-white/65 font-light leading-relaxed mb-12 max-w-xl"
         >
           Tailored legal services with a focus on delivering real outcomes for
           individuals and businesses.
@@ -54,7 +63,7 @@ const practiceAreas = await getCollection("practice-areas");
         <div class="flex flex-wrap gap-4">
           <a
             href="#areas"
-            class="group px-8 py-4 bg-white text-brand-blue-deep font-semibold hover:bg-brand-blue-light transition-all duration-300 shadow-lg hover:shadow-xl rounded-full inline-flex items-center gap-2"
+            class="group px-8 py-4 bg-brand-gold text-brand-blue-deep font-bold hover:bg-amber-400 transition-all duration-300 shadow-lg hover:shadow-xl rounded-none inline-flex items-center gap-2 uppercase tracking-wider text-sm"
           >
             Our Practice Areas
             <svg
@@ -71,7 +80,7 @@ const practiceAreas = await getCollection("practice-areas");
           </a>
           <a
             href="/contact"
-            class="px-8 py-4 border border-white/30 text-white hover:border-white hover:bg-white/10 transition-all duration-300 rounded-full font-medium backdrop-blur-sm"
+            class="px-8 py-4 border-2 border-white/40 text-white hover:border-brand-gold hover:text-brand-gold transition-all duration-300 rounded-none font-medium uppercase tracking-wider text-sm"
           >
             Get in Touch
           </a>
@@ -87,7 +96,7 @@ const practiceAreas = await getCollection("practice-areas");
         >Scroll</span
       >
       <div class="w-px h-8 bg-white/20 relative overflow-hidden">
-        <div class="absolute inset-0 bg-white/60 animate-scroll-line"></div>
+        <div class="absolute inset-0 bg-brand-gold animate-scroll-line"></div>
       </div>
     </div>
   </section>
