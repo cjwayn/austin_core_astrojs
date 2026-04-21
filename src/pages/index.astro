@@ -12,27 +12,29 @@ const practiceAreas = await getCollection("practice-areas");
        Full-viewport, atmospheric, bold statement
        ═══════════════════════════════════════════════════ -->
   <section class="relative min-h-screen flex items-center overflow-hidden">
-    <!-- Background image -->
+    <!-- Background image: quill pen on paper -->
     <div
-      class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-center"
+      class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1455849318743-b2233052fcff?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-center"
     >
     </div>
-    <!-- Gradient overlay - Darkened for better contrast -->
+    <!-- Warm amber/sepia gradient overlay for classic legal feel -->
     <div
-      class="absolute inset-0 bg-gradient-to-br from-gray-900/95 via-brand-blue-dark/90 to-brand-blue-deep/80"
+      class="absolute inset-0 bg-gradient-to-br from-stone-900/95 via-amber-950/88 to-stone-800/85"
     >
     </div>
-    <!-- Subtle geometric pattern -->
+    <!-- Subtle aged paper texture pattern -->
     <div
-      class="absolute inset-0 opacity-[0.04]"
-      style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"
+      class="absolute inset-0 opacity-[0.03]"
+      style="background-image: radial-gradient(ellipse at 2px 2px, #d4af37 1px, transparent 0); background-size: 28px 28px;"
     >
     </div>
 
     <div class="relative max-w-7xl mx-auto px-6 lg:px-8 py-32 z-10 w-full">
       <div class="max-w-3xl hero-animate">
         <div class="inline-flex items-center gap-3 mb-8">
-          <span class="h-px w-16 bg-brand-gold"></span>
+          <svg class="w-5 h-5 text-brand-gold opacity-80" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.71 4.04c.39-.39.39-1.02 0-1.41-.39-.39-1.02-.39-1.41 0l-5.3 5.3-1.42-1.41-1.41 1.41 1.41 1.42-8.88 8.88C3.5 18.63 3 19.5 3 20.5V21h.5c1 0 1.87-.5 2.27-.9l8.88-8.88 1.42 1.41 1.41-1.41-1.41-1.42 5.3-5.3z"/>
+          </svg>
           <span
             class="text-brand-gold uppercase tracking-[0.25em] text-xs font-semibold"
             >Boutique Law Firm</span
@@ -46,7 +48,7 @@ const practiceAreas = await getCollection("practice-areas");
           <span class="italic text-brand-gold">Efficient.</span>
         </h1>
         <p
-          class="text-lg md:text-xl text-white/70 font-light leading-relaxed mb-12 max-w-xl"
+          class="text-lg md:text-xl text-amber-100/70 font-light leading-relaxed mb-12 max-w-xl"
         >
           Tailored legal services with a focus on delivering real outcomes for
           individuals and businesses.
@@ -54,7 +56,7 @@ const practiceAreas = await getCollection("practice-areas");
         <div class="flex flex-wrap gap-4">
           <a
             href="#areas"
-            class="group px-8 py-4 bg-white text-brand-blue-deep font-semibold hover:bg-brand-blue-light transition-all duration-300 shadow-lg hover:shadow-xl rounded-full inline-flex items-center gap-2"
+            class="group px-8 py-4 bg-brand-gold text-stone-900 font-semibold hover:bg-amber-400 transition-all duration-300 shadow-lg hover:shadow-xl rounded-full inline-flex items-center gap-2"
           >
             Our Practice Areas
             <svg
@@ -71,7 +73,7 @@ const practiceAreas = await getCollection("practice-areas");
           </a>
           <a
             href="/contact"
-            class="px-8 py-4 border border-white/30 text-white hover:border-white hover:bg-white/10 transition-all duration-300 rounded-full font-medium backdrop-blur-sm"
+            class="px-8 py-4 border border-amber-200/30 text-amber-100 hover:border-brand-gold hover:bg-brand-gold/10 transition-all duration-300 rounded-full font-medium backdrop-blur-sm"
           >
             Get in Touch
           </a>
@@ -81,13 +83,13 @@ const practiceAreas = await getCollection("practice-areas");
 
     <!-- Scroll indicator -->
     <div
-      class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-white/40"
+      class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-amber-200/40"
     >
       <span class="text-[10px] uppercase tracking-[0.3em] font-light"
         >Scroll</span
       >
-      <div class="w-px h-8 bg-white/20 relative overflow-hidden">
-        <div class="absolute inset-0 bg-white/60 animate-scroll-line"></div>
+      <div class="w-px h-8 bg-amber-200/20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-brand-gold/60 animate-scroll-line"></div>
       </div>
     </div>
   </section>
